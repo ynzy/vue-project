@@ -4,6 +4,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+
+Vue.prototype.$axios = axios  //将axios添加到vue的原型上，所有vue实例上都可以使用axios
 
 Vue.config.productionTip = false
 
