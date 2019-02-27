@@ -28,5 +28,4 @@
       color #fff
       background url('../../static/img/music_logo.png') left center no-repeat
       background-size 18%
-
 </style>
