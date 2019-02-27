@@ -1,0 +1,30 @@
+[
+	{
+		"songName": "你的名字",
+		"songImgSrc": "static/upload/song1.jpg",
+		"songId": "10001",
+		"songCount": 200,
+		"linkUrl": "baidu.com"
+	},
+	{
+		"songName": "倩女幽魂",
+		"songImgSrc": "static/upload/song2.jpg",
+		"songId": "10001",
+		"songCount": 200,
+		"linkUrl": "baidu.com"
+	},
+	{
+		"songName": "寂静的雨",
+		"songImgSrc": "static/upload/song3.jpg",
+		"songId": "10001",
+		"songCount": 200,
+		"linkUrl": "baidu.com"
+	},
+	{
+		"songName": "你的名字",
+		"songImgSrc": "static/upload/song4.jpg",
+		"songId": "10001",
+		"songCount": 200,
+		"linkUrl": "baidu.com"
+	}
+]

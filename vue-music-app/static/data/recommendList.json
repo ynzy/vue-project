@@ -1,0 +1,44 @@
+[
+	{
+		"songName": "你的名字",
+		"songImgSrc": "static/upload/song1.png",
+		"songId": "10001",
+		"songCount": 200,
+		"singer": "周杰伦"
+	},
+	{
+		"songName": "倩女幽魂",
+		"songImgSrc": "static/upload/song2.png",
+		"songId": "10001",
+		"songCount": 200,
+		"singer": "张国荣"
+	},
+	{
+		"songName": "寂静的雨",
+		"songImgSrc": "static/upload/song3.png",
+		"songId": "10001",
+		"songCount": 200,
+		"singer": "蔡智恒"
+	},
+	{
+		"songName": "你的名字",
+		"songImgSrc": "static/upload/song1.png",
+		"songId": "10001",
+		"songCount": 200,
+		"singer": "张国荣"
+	},
+	{
+		"songName": "倩女幽魂",
+		"songImgSrc": "static/upload/song2.png",
+		"songId": "10001",
+		"songCount": 200,
+		"singer": "张国荣"
+	},
+	{
+		"songName": "寂静的雨",
+		"songImgSrc": "static/upload/song3.png",
+		"songId": "10001",
+		"songCount": 200,
+		"singer": "张国荣"
+	}
+]
