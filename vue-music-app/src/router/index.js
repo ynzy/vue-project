@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Recommend from '@/components/Recommend'
 import Hot from '@/components/Hot'
 import Search from '@/components/Search'
+import Detail from '@/components/detail'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/search',
       name: 'Search',
       component: Search
+    },
+    {
+      path: '/detail/:item',  //TODO:通过params传参
+      name: 'Detail',
+      component: Detail
     }
   ],
   linkActiveClass:'active'

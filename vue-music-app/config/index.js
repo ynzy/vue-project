@@ -10,7 +10,31 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    //TODO: 配置接口地址代理
+    proxyTable: {
+      '/song': {  //匹配项,放在项目调用中
+        target: 'http://www.wanandroid.com/tools/mockapi/9664/songlist', // 接口域名
+        // secure: false,  // 如果是https接口，需要配置这个参数
+        changeOrigin: true, //是否跨域
+        pathRewrite: { //重写地址
+          '^/song': '' //因为接口中没有这个匹配项，所以要重写地址，才能正常访问
+        }
+      },
+      '/recommend': {
+        target: 'http://www.wanandroid.com/tools/mockapi/9664/recommend', // 接口域名
+        changeOrigin: true, //是否跨域
+        pathRewrite: {
+          '^/recommend': '' // 因为在 ajax 的 url 中加了前缀 '/api'，而原本的接口是没有这个前缀的,所以需要通过 pathRewrite 来重写地址，将前缀 '/api' 转为 '/'
+        }
+      },
+      '/hot': {
+        target: 'http://www.wanandroid.com/tools/mockapi/9664/hot', // 接口域名
+        changeOrigin: true, //是否跨域
+        pathRewrite: {
+          '^/hot': '' // 因为在 ajax 的 url 中加了前缀 '/api'，而原本的接口是没有这个前缀的,所以需要通过 pathRewrite 来重写地址，将前缀 '/api' 转为 '/'
+        }
+      },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -20,7 +44,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
@@ -43,7 +67,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './', //TODO: 编译打包前要改的地方
 
     /**
      * Source Maps

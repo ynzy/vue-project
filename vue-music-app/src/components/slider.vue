@@ -31,8 +31,8 @@ export default {
         document.getElementsByClassName("banner")[i].style.float = "left";
       }
       //获取轮播图第一个节点，并进行深度复制
-      let firstNode = document.getElementsByClassName("banner")[0].cloneNode(true);
-      this.$refs.sliderGroup.appendChild(firstNode); //将第一个节点添加到父节点里（直接为最后一个节点）
+      // let firstNode = document.getElementsByClassName("banner")[0].cloneNode(true);
+      // this.$refs.sliderGroup.appendChild(firstNode); //将第一个节点添加到父节点里（直接为最后一个节点）
     },
     slide() {
       let index = 0;
