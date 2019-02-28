@@ -13,7 +13,7 @@
     <div class="loadingcontainer">
 			<loading v-show="!songList.length"></loading>
 		</div>
-    <!-- 动态绑定数据，子组件通过props接收数据 -->
+    <!-- TODO:动态绑定数据，子组件通过props接收数据 -->
     <songList :song-list="songList"></songList>
     	
   </div>
