@@ -12,9 +12,9 @@
     "transform-vue-jsx", 
     "transform-runtime",
     ["import", {
-      "libraryName": "vant",
-      "libraryDirectory": "es",
-      "style": true
+      "libraryName": "muse-ui",
+      "libraryDirectory": "lib",
+      "camel2DashComponentName": false
     }]
   ]
 }

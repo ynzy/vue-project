@@ -27,7 +27,7 @@ import {mapGetters,mapActions}  from 'vuex'
         },
         mounted () {
             //TODO:parmas传参不可以刷新，会丢失数据，query可以刷新页面
-            // console.log(this.$route.params)
+            console.log(this.$route.query)
             // this.songDetail = this.$route.params.item  //TODO: params接收路由传递的参数
             this.songDetail = JSON.parse(this.$route.query.item); //TODO: query接收路由传递的参数
         },

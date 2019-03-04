@@ -1,14 +1,20 @@
 <template>
   <div class="recommend">
     <h2 class="recommendlist">推荐歌单</h2>
+  
     <slider>
       <!-- TODO:使用插槽,通过组件的slot标签，替换数据 -->
-      <div v-for="item in slider" class="banner">
-        <a :href="item.linkUrl">
-          <img class="bannerimg" :src="item.songImgSrc"  :alt="item.songName">
-        </a>
+      <div v-for="item in slider" :key="item.id">
+        {{ item.songName }}
       </div>
     </slider>
+    <van-swipe :autoplay="3000">
+        <van-swipe-item v-for="(item, index) in slider" :key="index">
+           <a :href="item.linkUrl">
+              <img class="bannerimg" :src="item.songImgSrc" />
+           </a>
+        </van-swipe-item>
+    </van-swipe>
     <h2 class="recommendlist">推荐歌单</h2>
     <div class="loadingcontainer">
 			<loading v-show="!songList.length"></loading>
@@ -20,6 +26,7 @@
 </template>
 
 <script>
+
 import slider from "./slider.vue";
 import songList from "./Songlist.vue"
 import loading from "./loading.vue"
@@ -103,4 +110,7 @@ export default {
     .loadingcontainer
     	position relative
     	top 50px	
+    .bannerimg {
+      width: 100%;
+    }
 </style>
