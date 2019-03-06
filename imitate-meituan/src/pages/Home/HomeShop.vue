@@ -23,34 +23,41 @@
 <script>
 var shopList = "http://localhost:8066/static/json/shopList.json";
 
+import { mapState } from "vuex";
 import { getShopList } from "@/api/shop";
 
 export default {
   data() {
     return {
-      list: [],
+      // list: [],
       loading: false,
-      finished: false,
-      page: 0
+      finished: false
+      // page: 0
     };
   },
-  mounted() {
-    
+  computed: {
+    ...mapState({
+      list: state => state.shop.list,
+      page: state => state.shop.page
+    })
   },
+  mounted() {},
   methods: {
     onLoad() {
-      this.page++; //每次加载刷新，页数加1
+      //每次加载刷新，页数加1
+      this.$store.commit("nextpage");
+
       // 数据全部加载完成
       setTimeout(() => {
         getShopList(this.page)
           .then(res => {
             if (res.data.success) {
-              console.log("123");
               // console.log(this.list);
               // console.log(res.data.shop);
-              res.data.shop.forEach(item => {
-                this.list.push(item);
-              });
+              // res.data.shop.forEach(item => {
+              //   this.list.push(item);
+              // });
+              this.$store.commit("setshoplist", res.data.shop);
               // 加载状态结束
               this.loading = false;
             }
