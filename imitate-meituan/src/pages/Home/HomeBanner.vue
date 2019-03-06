@@ -1,7 +1,8 @@
 <template>
   <div class="banner">
     <van-swipe class="banner-item"  :autoplay="3000" indicator-color="white">
-      <van-swipe-item v-for="item in banner">
+        <!-- TODO:保证key的唯一性 -->
+      <van-swipe-item v-for="(item,key) in banner"  :key="item.id">  
           <img :src="item.image" alt="">
       </van-swipe-item>
     </van-swipe>
@@ -18,10 +19,10 @@ export default {
     },
     mounted () {
         this.axios.get('https://www.easy-mock.com/mock/5c7d08e7b7a08d1246bef9ff/api/banner').then(resp => {
-            // console.log(resp.data)
+            //  console.log(resp.data)
             if(resp.data) {
                 this.banner = resp.data.banner;
-                console.log(this.banner)
+                // console.log(this.banner)
             }
         }) 
     }

@@ -1,0 +1,89 @@
+{
+    "success": true,
+    "images": [
+        {
+            "id": 1,
+            "name": "美食",
+            "path": "../../../static/images/item1/ms.png",
+            "link": "/meishi"
+        },
+        {
+            "id": 2,
+            "name": "电影",
+            "path": "../../../static/images/item1/dy.png",
+            "link": "/order"
+        },
+        {
+            "id": 3,
+            "name": "酒店",
+            "path": "../../../static/images/item1/jd.png",
+            "link": "/meishi"
+        },
+        {
+            "id": 5,
+            "name": "休闲",
+            "path": "../../../static/images/item1/xxyl.png",
+            "link": "/order"
+        },
+        {
+            "id": 6,
+            "name": "外卖",
+            "path": "../../../static/images/item1/wm.png",
+            "link": "/meishi"
+        }
+    ],
+    "icon1": [
+        {
+            "id": 7,
+            "name": "周边游",
+            "path": "../../../static/images/item2/zby.png"
+        },
+        {
+            "id": 8,
+            "name": "机票",
+            "path": "../../../static/images/item2/hcpjp.png"
+        },
+        {
+            "id": 9,
+            "name": "丽人",
+            "path": "../../../static/images/item2/lr.png"
+        },
+        {
+            "id": 10,
+            "name": "KTV",
+            "path": "../../../static/images/item2/ktv.png"
+        },
+        {
+            "id": 11,
+            "name": "美团",
+            "path": "../../../static/images/item2/wm.png"
+        }
+    ],
+    "icon2": [
+        {
+            "id": 12,
+            "name": "景点",
+            "path": "../../../static/images/item3/jdmp.png"
+        },
+        {
+            "id": 13,
+            "name": "结婚",
+            "path": "../../../static/images/item3/jh.png"
+        },
+        {
+            "id": 14,
+            "name": "母婴",
+            "path": "../../../static/images/item3/my.png"
+        },
+        {
+            "id": 15,
+            "name": "生活",
+            "path": "../../../static/images/item3/sh.png"
+        },
+        {
+            "id": 16,
+            "name": "更多",
+            "path": "../../../static/images/item3/gd.png"
+        }
+    ]
+}

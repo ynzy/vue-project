@@ -15,5 +15,14 @@ export default {
 
 <style lang="less" >
 @import 'http://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css'; 
-
+.hairline-bottom {
+    border-bottom: 1px solid #eee;
+}
+.hairline-right {
+    border-right: 1px solid #eee;
+}
+.hairline-lr {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
 </style>

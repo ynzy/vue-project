@@ -40,7 +40,7 @@ export default {
     .item {
         align-items: center;
        .left {
-           padding-left: 10px;
+          text-align: center;
        }
     }
 }

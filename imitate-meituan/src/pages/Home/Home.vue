@@ -1,11 +1,15 @@
 <template>
-    <div>
+    <div class="home">
+        <!-- 标题 -->
         <HomeNav></HomeNav>
+        <!-- 轮播图 -->
         <HomeBanner></HomeBanner>
+        <!-- 列表菜单项 -->
         <HomeColumn></HomeColumn>
+        <!-- 广告 -->
         <HomeAd></HomeAd>
+        <!-- 商品列表 -->
         <HomeShop></HomeShop>
-        <!-- <router-link to="/meishi">美食</router-link> -->
     </div>
 </template>
 
@@ -26,6 +30,8 @@ import HomeShop from './HomeShop.vue'
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+.home {
+    padding-bottom: 0.45rem;
+}
 </style>
