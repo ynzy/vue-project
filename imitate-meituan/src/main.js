@@ -5,18 +5,19 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import axios from 'axios'
+//引入axios
+import axios from 'axios';
 Vue.prototype.axios = axios;
-
+//引入vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
-
 Vue.use(Vant);
+//引入museui
+import './MuseUi';
+//引入自定义字体图标
+import '@/assets/icomt/style.scss'
 
-import './MuseUi'
 Vue.config.productionTip = false
-
-
 
 /* eslint-disable no-new */
 new Vue({
