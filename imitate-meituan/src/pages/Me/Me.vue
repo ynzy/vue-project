@@ -1,14 +1,31 @@
 <template>
-  <div>
-    我的
-    <i class="icon-mt-hezuo" style="font-size:40px;"></i>
-    <i class="icon-mt-user"></i>
+  <div class="mine">
+   <MeNav></MeNav>
+   <MeBanner></MeBanner>
+   <MeMoney></MeMoney>
+   <MeOther></MeOther>
   </div>
 </template>
 
 <script>
-export default {};
+import MeNav from './MeNav'
+import MeBanner from './MeBanner'
+import MeMoney from './MeMoney'
+import MeOther from './MeOther'
+export default {
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    MeNav,
+    MeBanner,
+    MeMoney,
+    MeOther
+  }
+};
 </script>
 
-<style scoped>
+<style less="" scoped>
 </style>

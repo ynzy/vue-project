@@ -56,6 +56,7 @@ Vue.use(BottomNav);
 Vue.use(Paper);
 Vue.use(TextField);
 Vue.use(Badge);
+Vue.use(Avatar);
 Vue.use(theme);
 
 
