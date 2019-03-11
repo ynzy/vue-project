@@ -7,6 +7,7 @@ import Msite from '@/pages/Msite/Msite'
 import Order from '@/pages/Order/Order'
 import Profile from '@/pages/Profile/Profile'
 import Search from '@/pages/Search/Search'
+import Login from '@/pages/Login/Login'
 Vue.use(Router)
 
 export default new Router({
@@ -18,22 +19,39 @@ export default new Router({
     {
       path: '/msite',
       name: 'msite',
-      component: Msite
+      component: Msite,
+      meta: {  //配置元数据确定是否显示footer
+        showFooter: true
+      }
     },
     {
       path: '/order',
       name: 'order',
-      component: Order
+      component: Order,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/profile',
       name: 'profile',
-      component: Profile
+      component: Profile,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/search',
       name: 'search',
-      component: Search
+      component: Search,
+      meta: {
+        showFooter: true
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
   ]
 })

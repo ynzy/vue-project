@@ -8,8 +8,6 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
 
-import './assets/iconfont/iconfont.css'
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

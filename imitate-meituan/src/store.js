@@ -12,10 +12,10 @@ var state = {
 }
 
 const mutations = {
-  setshoplist(state, data) {
-    state.shop.list = state.shop.list.concat(data)
+  setshoplist(state, data) {  //设置商品列表数据
+    state.shop.list = state.shop.list.concat(data)  //拼接数组
   },
-  nextpage(state){
+  nextpage(state){  //下一页
     state.shop.page++;
   }
 }

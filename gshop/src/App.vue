@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <router-view/>
-    <FooterGuide></FooterGuide>
+    <!-- TODO: 底部菜单组件是否要显示 -->
+    <FooterGuide v-show="$route.meta.showFooter"></FooterGuide>
   </div>
 </template>
 

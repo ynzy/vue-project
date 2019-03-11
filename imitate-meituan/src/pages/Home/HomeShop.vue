@@ -21,10 +21,8 @@
 </template>
 
 <script>
-var shopList = "http://localhost:8066/static/json/shopList.json";
-
 import { mapState } from "vuex";
-import { getShopList } from "@/api/shop";
+import { getShopList } from "@/api/shop";  //引入获取商品列表分页数据的方法
 
 export default {
   data() {

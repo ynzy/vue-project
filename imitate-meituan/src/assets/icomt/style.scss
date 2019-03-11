@@ -34,6 +34,7 @@ i[class^="icon-mt-"],i[class*=" icon-mt-"] {
     color: $icon-mt-color;
   }
 }
+//默认没有状态样式，自定义添加
 .icon-mt-hezuo:active {
   &:before {
     content: $icon-mt-hezuo;     
