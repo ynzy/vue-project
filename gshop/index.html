@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/static//css/reset.css">
   <!-- 引入阿里图标库 -->
   <link rel="stylesheet" href="http://at.alicdn.com/t/font_1077199_3kjjxyuafdw.css">
-  <!-- 解决点击响应延时 0.3s 问题 -->
+  <!-- TODO: 解决点击响应延时 0.3s 问题 -->
   <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
   <script>
     if ('addEventListener' in document) {
@@ -19,9 +19,12 @@
     if(!window.Promise) {
       document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
     }
+    
   </script>
 </head>
-
+<style>
+ * { touch-action: pan-y; } 
+</style>
 <body>
   <div id="app"></div>
   <!-- built files will be auto injected -->
