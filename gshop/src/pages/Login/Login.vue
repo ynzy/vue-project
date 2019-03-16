@@ -23,7 +23,7 @@
                 :disabled="!rightPhone"
                 class="get_verification"
                 :class="{right_phone: rightPhone}"
-                @click="getCode"
+                @click.prevent="getCode"
               >{{computeTime>0? `已发送(${computeTime}s)` :'获取验证码'}}</button>
             </section>
             <section class="login_verification">
@@ -72,6 +72,7 @@
 
 <script>
 import AlertTip from "../../components/AlertTip/AlertTip.vue";
+import { reqSendCode, reqSmsLogin, reqPwdLogin } from "../../api";
 export default {
   data() {
     return {
@@ -96,28 +97,40 @@ export default {
 
   methods: {
     //异步获取验证码
-    getCode() {
+    async getCode() {
       //如果当时没有计时
       if (!this.computeTime) {
         //启动倒计时
         this.computeTime = 30;
         //TODO: 间歇调用
-        const intervalId = setInterval(() => {
+         this.intervalId = setInterval(() => {
           this.computeTime--;
           if (this.computeTime <= 0) {
-            clearInterval(intervalId);
+            clearInterval(this.intervalId);
           }
         }, 1000);
       }
 
       //发送ajax请求(向指定手机号发送验证码短信)
+      const result = await reqSendCode(this.phone)
+      if(result.code === 1) {
+        //发送失败，显示提示
+        this.showAlert(result.msg)
+        //停止倒计时
+        if(this.computeTime) {
+          this.computeTime = 0
+          clearInterval(this.intervalId)
+          this.intervalId = undefined
+        }
+      }
     },
     showAlert(alertText) {
       this.alertShow = true;
       this.alertText = alertText;
     },
     //异步登录
-    login() {
+    async login() {
+      let result
       //前台表单验证
       if (this.loginWay) {
         //短信登录
@@ -125,25 +138,50 @@ export default {
         if (!this.rightPhone) {
           //手机号不正确
           this.showAlert("手机号不正确");
+          return
         } else if (!/^\d{6}$/.test(code)) {
           // alert(this.code)
           //验证码必须是6位数字
           this.showAlert("验证码必须是6位数字");
+          return
         }
+        // 发送ajax请求，短信登录
+        result = await reqSmsLogin(phone,code)
+
       } else {
         //密码登录
         const { name, pwd, captcha } = this;
         if (!this.name) {
           //用户名必须指定
           this.showAlert("用户名必须指定");
+          return
         } else if (!this.pwd) {
           //密码必须指定
           this.showAlert("密码必须指定");
+          return
         } else if (!this.captcha) {
           //图形验证码必须指定
           this.showAlert("图形验证码必须指定");
+          return
         }
+        // 发送ajax请求，密码登录
+        result = await reqPwdLogin({name,pwd,captcha})
       }
+
+      //根据结果数据处理
+        if(result.code === 0) {
+          const user = result.data
+          //将user保存到vuex的state中
+          this.$store.dispatch('recordUser',user)
+          //去个人中心界面
+          this.$router.replace('/profile')
+        } else {
+          //显示新的图形验证码
+          this.getCaptcha()
+          //显示警告提示
+          const msg = result.msg
+          this.showAlert(msg)
+        }
     },
     
     //关闭警告框

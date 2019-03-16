@@ -3,12 +3,17 @@
   <section class="msite">
     <!--首页头部-->
     <HeaderTop :title="address.name">
-      <span class="header_search" slot="left">
-        <i class="iconfont icon-sousuo"></i>
-      </span>
-      <span class="header_login" slot="right">
-        <span class="header_login_text">登录|注册</span>
-      </span>
+      <router-link class="header_search" slot="left" to="/search">
+        <i class="iconfont icon-search" style="color: #fff"></i>
+      </router-link>
+      <router-link class="header_login" slot="right" :to="userInfo.id? '/userInfo': '/login'">
+        <span class="header_login_text" v-if="!userInfo._id">
+          登录|注册
+          </span>
+        <span class="header_login_text" v-else>
+          <i class="iconfont icon-geren"></i>
+          </span>
+      </router-link>
     </HeaderTop>
     <div class="miste-content-wrapper">
       <div class="miste-content">
@@ -62,7 +67,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["address", "categorys"]),
+    ...mapState(["address", "categorys","userInfo"]),
 
     /*
       根据categorys一维数组生成一个2维数组

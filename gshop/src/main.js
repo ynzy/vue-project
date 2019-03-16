@@ -9,6 +9,10 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
 
+import {Button} from 'mint-ui'
+// 注册全局组件标签
+Vue.component(Button.name, Button)  // <mt-button>
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

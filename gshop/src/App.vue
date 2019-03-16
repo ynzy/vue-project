@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     //TODO: 方法2.以数组形式映射模块中的方法
-    ...mapActions(['getAddress'])
+    ...mapActions(['getAddress','getUserInfo'])
   },
   // async mounted () {  //TODO:ES7语法，async await es7 promise
   //  const geohash = '40.10038,116.36867'
@@ -38,6 +38,7 @@ export default {
     //TODO: 方法1.含有异步操作，例如向后台提交数据
     // this.$store.dispatch('getAddress')
     this.getAddress();
+    this.getUserInfo();
   }
 }
 </script>
