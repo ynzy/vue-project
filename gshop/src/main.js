@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+import './mock/mockServer'  // 加载mockServer即可
+
+
 import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);

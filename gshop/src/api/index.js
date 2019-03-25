@@ -33,7 +33,7 @@ export const reqLogout = () => ajax(BASE_URL + '/logout')
 /**
  * 获取商家信息
  */
-export const reqShopInfo = () => ajax('/info')
+export const reqShopInfo = () => ajax('/info')  //mock模拟数据不需要代理api
 
 /**
  * 获取商家评价数组
