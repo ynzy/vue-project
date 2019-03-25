@@ -1,7 +1,7 @@
 /*
 直接更新state的多个方法的对象
  */
-
+import Vue from 'vue'
 import {
   RECEIVE_ADDRESS,
   RECEIVE_CATEGORYS,
@@ -44,6 +44,23 @@ const mutations = {
     },
     [RECEIVE_GOODS](state,{goods}) {
         state.goods = goods
+    },
+
+    [INCREMENT_FOOD_COUNT](state,{food}) {
+        if(!food.count) { //第一次增加
+        // food.count = 1  // 新增属性(没有数据绑定)
+    
+        //TODO: 在已绑定的数据中添加新的数据进行绑定
+        Vue.set(food, 'count', 1)  //让新增的属性也有数据绑定
+        } else {
+            food.count++
+        }
+    },
+    [DECREMENT_FOOD_COUNT](state,{food}) {
+        if(food.count) {  //只有有值大于0才减
+          food.count--
+        }
+        
     },
 }
 
