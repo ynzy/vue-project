@@ -3,19 +3,17 @@
   <div>
     <div class="goods">
       <div class="menu-wrapper" ref="menuWrapper">
-        <ul>
+        <ul ref="menusUl">
           <!-- current -->
-          <li class="menu-item "
-          v-for="(good, index) in goods" :key="index" 
-          :class="{current: index===currentIndex}"
-          @click="clickMenuItem(index)"
+          <li
+            class="menu-item"
+            v-for="(good, index) in goods"
+            :key="index"
+            :class="{current: index===currentIndex}"
+            @click="clickMenuItem(index)"
           >
             <span class="text bottom-border-1px">
-              <img
-                class="icon"
-                :src="good.icon"
-                v-if="good.icon"
-              >
+              <img class="icon" :src="good.icon" v-if="good.icon">
               {{good.name}}
             </span>
           </li>
@@ -26,12 +24,13 @@
           <li class="food-list-hook" v-for="(good, index) in goods" :key="index">
             <h1 class="title">{{good.name}}</h1>
             <ul>
-              <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index">
+              <li
+                class="food-item bottom-border-1px"
+                v-for="(food, index) in good.foods"
+                :key="index"
+              >
                 <div class="icon">
-                  <img
-                    width="57"
-                    height="57"
-                    :src="food.icon">
+                  <img width="57" height="57" :src="food.icon">
                 </div>
                 <div class="content">
                   <h2 class="name">{{food.name}}</h2>
@@ -42,7 +41,7 @@
                   </div>
                   <div class="price">
                     <span class="now">￥{{food.price}}</span>
-                     <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
+                    <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
                   <div class="cartcontrol-wrapper">CartControl</div>
                 </div>
@@ -56,73 +55,81 @@
 </template>
 
 <script>
-import BScroll from 'better-scroll'
-import {mapState} from 'vuex'
+import BScroll from "better-scroll";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       scrollY: 0, // 右侧滑动的Y轴坐标 (滑动过程时实时变化)
-        tops: [], // 所有右侧分类li的top组成的数组  (列表第一次显示后就不再变化)
-        food: {}, // 需要显示的food
-        leftTops: [],
+      tops: [], // 所有右侧分类li的top组成的数组  (列表第一次显示后就不再变化)
+      food: {}, // 需要显示的food
+      leftTops: [],
+      leftScrollY: 0
     };
   },
-  mounted () {
-    this.$store.dispatch('getShopGoods', () => { //数据更新后执行
+  mounted() {
+    this.$store.dispatch("getShopGoods", () => {
+      //数据更新后执行
       this.$nextTick(() => {
         this._initScroll();
         this._initTops();
-      })
-    })
+      });
+    });
   },
   computed: {
-    ...mapState(['goods']),
+    ...mapState(["goods"]),
     //计算得到当前分类的下标
-    currentIndex () {
+    currentIndex() {
       // 得到条件数据
-        const {scrollY, tops} = this
+      const { scrollY, tops } = this;
       // 根据条件计算产生一个结果
       //TODO: findIndex: 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置
-        const index = tops.findIndex((top, index) => {
-          // scrollY>=当前top && scrollY<下一个top
-          return scrollY >= top && scrollY < tops[index+1]
-        })
+      const index = tops.findIndex((top, index) => {
+        // scrollY>=当前top && scrollY<下一个top
+        return scrollY >= top && scrollY < tops[index + 1];
+      });
+      if(index > 7) {
+        const leftScrollY = this.leftTops[index-7];
+        this.leftScrollY = leftScrollY;
+        this.menuScroll.scrollTo(0, -leftScrollY, 300);
+      }
       // 返回结果
-      return index
+      return index;
     }
   },
 
-  methods: {  //TODO: methods里放事件相关的函数，加‘_’是为了与事件函数区分开
+  methods: {
+    //TODO: methods里放事件相关的函数，加‘_’是为了与事件函数区分开
     //初始化滚动
     _initScroll() {
       //列表显示之后创建
-        new BScroll('.menu-wrapper', {
-          click: true
-        })
-        this.foodsScroll = new BScroll('.foods-wrapper', {
-          probeType: 2,  // 因为惯性滑动不会触发
-          click: true
-        })
-        // 给右侧列表绑定scroll监听
-        this.foodsScroll.on ('scroll', ({x, y}) => {
-          console.log(x,y)
-          this.scrollY = Math.abs(y)
-        })
-                // 给右侧列表绑定scroll结束的监听
-        this.foodsScroll.on('scrollEnd', ({x, y}) => {
-          console.log('scrollEnd', x, y)
-          this.scrollY = Math.abs(y)
-        })
+      this.menuScroll = new BScroll(".menu-wrapper", {
+        click: true
+      });
+      this.foodsScroll = new BScroll(".foods-wrapper", {
+        probeType: 2, // 因为惯性滑动不会触发
+        click: true
+      });
+      // 给右侧列表绑定scroll监听
+      this.foodsScroll.on("scroll", ({ x, y }) => {
+        // console.log(x, y);
+        this.scrollY = Math.abs(y);
+      });
+      // 给右侧列表绑定scroll结束的监听
+      this.foodsScroll.on("scrollEnd", ({ x, y }) => {
+        // console.log("scrollEnd", x, y);
+        this.scrollY = Math.abs(y);
+      });
     },
     //初始化tops
     _initTops() {
       //1. 初始化tops
-      const tops = []
-      let top = 0 
-      tops.push(top)
+      const tops = [];
+      let top = 0;
+      tops.push(top);
       //2. 收集top值
       //找到所有分类li
-      const lis = this.$refs.foodsUl.getElementsByClassName('food-list-hook')
+      const lis = this.$refs.foodsUl.getElementsByClassName("food-list-hook");
       /**
        * 首先 这是创建了一个类数组lis（就是没有具体数据的数组），使用Array.prototype把类数组转换为原型数组，prototype是原型的意思
         为什么要转换为原型数组呢？因为类数组是没有slice()方法的，需要把类数组转换为原型数组才能调用slice()这个方法
@@ -133,24 +140,33 @@ export default {
         所以Array.prototype.slice.call(lis)数组就完全变成真正的数组啦！
        */
       Array.prototype.slice.call(lis).forEach(li => {
-        top += li.clientHeight  //客户区高度
-        tops.push(top)
-      })
+        top += li.clientHeight; //客户区高度
+        tops.push(top);
+      });
       //3. 更新数据
-      this.tops = tops
-      console.log(tops)
+      this.tops = tops;
+      // console.log(tops);
 
-
+      //初始化左侧滑动高度
+      const leftTops = [];
+      let leftTop = 0;
+      leftTops.push(leftTop);
+      const leftTopLi = this.$refs.menusUl.getElementsByClassName("menu-item");
+      Array.prototype.slice.call(leftTopLi).forEach(li => {
+        leftTop += li.clientHeight; //客户区高度
+        leftTops.push(leftTop);
+      });
+      this.leftTops = leftTops;
+      // console.log(leftTops);
     },
     clickMenuItem(index) {
-
       //使用右侧列表滑动到对应的位置
       // 得到目标位置的scrollY
-      const scrollY = this.tops[index]
+      const scrollY = this.tops[index];
       // 立即更新scrollY(让点击的分类项成为当前分类)
-      this.scrollY = scrollY
+      this.scrollY = scrollY;
       // 平滑滑动右侧列表
-      this.foodsScroll.scrollTo(0, -scrollY, 300)
+      this.foodsScroll.scrollTo(0, -scrollY, 300);
     }
   },
   components: {}
