@@ -2,10 +2,11 @@
 <template>
   <div class="cartcontrol">
     <transition name="move">
-      <div class="iconfont icon-remove1" v-if="food.count" @click="updateFoodCount(false)"></div>
+      <!-- TODO: .stop阻止事件冒泡，点击加减号不再弹出food组件 -->
+      <div class="iconfont icon-remove1" v-if="food.count" @click.stop="updateFoodCount(false)"></div>
     </transition>
     <div class="cart-count" v-if="food.count">{{food.count}}</div>
-    <div class="iconfont icon-addcontacts" @click="updateFoodCount(true)"></div>
+    <div class="iconfont icon-addcontacts" @click.stop="updateFoodCount(true)"></div>
   </div>
 </template>
 

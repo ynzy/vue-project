@@ -28,6 +28,7 @@
                 class="food-item bottom-border-1px"
                 v-for="(food, index) in good.foods"
                 :key="index"
+                @click="showFood(food)"
               >
                 <div class="icon">
                   <img width="57" height="57" :src="food.icon">
@@ -53,13 +54,15 @@
         </ul>
       </div>
     </div>
+    <Food :food="food" ref="food"></Food>
   </div>
 </template>
 
 <script>
 import BScroll from "better-scroll";
 import { mapState } from "vuex";
-  import CartControl from '../../../components/CartControl/CartControl.vue'
+import CartControl from "../../../components/CartControl/CartControl.vue";
+import Food from "../../../components/Food/Food.vue"
 export default {
   data() {
     return {
@@ -67,7 +70,8 @@ export default {
       tops: [], // 所有右侧分类li的top组成的数组  (列表第一次显示后就不再变化)
       food: {}, // 需要显示的food
       leftTops: [],
-      leftScrollY: 0
+      leftScrollY: 0,
+      food: {}
     };
   },
   mounted() {
@@ -91,8 +95,8 @@ export default {
         // scrollY>=当前top && scrollY<下一个top
         return scrollY >= top && scrollY < tops[index + 1];
       });
-      if(index > 7) {
-        const leftScrollY = this.leftTops[index-7];
+      if (index > 7) {
+        const leftScrollY = this.leftTops[index - 7];
         this.leftScrollY = leftScrollY;
         this.menuScroll.scrollTo(0, -leftScrollY, 300);
       }
@@ -170,10 +174,19 @@ export default {
       this.scrollY = scrollY;
       // 平滑滑动右侧列表
       this.foodsScroll.scrollTo(0, -scrollY, 300);
+    },
+    //显示点击的food
+    showFood(food) {
+      //设置food
+      this.food = food
+      //显示food组件(在父组件中调用子组件对象的方法)
+      console.log(this.$refs.food)
+      this.$refs.food.toggleShow()
     }
   },
   components: {
     CartControl,
+    Food
   }
 };
 </script>
