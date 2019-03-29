@@ -53,16 +53,18 @@
           </li>
         </ul>
       </div>
+      <ShopCart />
     </div>
     <Food :food="food" ref="food"></Food>
   </div>
 </template>
 
 <script>
-import BScroll from "better-scroll";
-import { mapState } from "vuex";
-import CartControl from "../../../components/CartControl/CartControl.vue";
+import BScroll from "better-scroll"
+import { mapState } from "vuex"
+import CartControl from "../../../components/CartControl/CartControl.vue"
 import Food from "../../../components/Food/Food.vue"
+import ShopCart from "../../../components/ShopCart/ShopCart.vue"
 export default {
   data() {
     return {
@@ -178,15 +180,16 @@ export default {
     //显示点击的food
     showFood(food) {
       //设置food
-      this.food = food
+      this.food = food;
       //显示food组件(在父组件中调用子组件对象的方法)
-      console.log(this.$refs.food)
-      this.$refs.food.toggleShow()
+      console.log(this.$refs.food);
+      this.$refs.food.toggleShow();
     }
   },
   components: {
     CartControl,
-    Food
+    Food,
+    ShopCart
   }
 };
 </script>

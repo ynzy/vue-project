@@ -126,8 +126,12 @@ const actions = {
     } else {
       commit(DECREMENT_FOOD_COUNT, {food})
     }
-  }
+  },
 
+  //同步清空购物车
+  clearCart({commit}) {
+    commit(CLEAR_CART)
+  },
 }
 
 export default actions
