@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import CartControl from '../../components/CartControl/CartControl.vue'
+import CartControl from '../../components/CartControl/CartControl.vue'
 export default {
   props: {
     food: Object

@@ -17,6 +17,7 @@
           <div class="pay" :class="payClass">{{payText}}</div>
         </div>
       </div>
+      <transition name="move">
       <div class="shopcart-list" v-show="listShow">
         <div class="list-header">
           <h1 class="title">购物车</h1>
@@ -36,6 +37,7 @@
           </ul>
         </div>
       </div>
+      </transition>
     </div>
     <div class="list-mask" v-show="listShow" @click="toggleShow"></div>
   </div>
@@ -264,6 +266,7 @@ export default {
     top: 0;
     z-index: -1;
     width: 100%;
+    // 向上移动整个高度的距离100%
     transform: translateY(-100%);
 
     &.move-enter-active, &.move-leave-active {

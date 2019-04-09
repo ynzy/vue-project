@@ -73,7 +73,6 @@ export default {
       food: {}, // 需要显示的food
       leftTops: [],
       leftScrollY: 0,
-      food: {}
     };
   },
   mounted() {

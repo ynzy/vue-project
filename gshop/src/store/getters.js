@@ -11,6 +11,10 @@ const getters = {
   totalPrice(state) {
     return state.cartFoods.reduce((preTotal, food) => preTotal + food.count * food.price, 0)
   },
+  //计算满意度，看rateType的值是否为1，是则加一，0则不加
+  positiveSize(state) {
+    return state.ratings.reduce((preTotal, rating) => preTotal + (rating.rateType===0?1:0) ,0)
+  }
 }
 
 export default getters
