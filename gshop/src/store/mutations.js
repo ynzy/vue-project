@@ -49,7 +49,6 @@ const mutations = {
     [INCREMENT_FOOD_COUNT](state,{food}) {
         if(!food.count) { //第一次增加
         // food.count = 1  // 新增属性(没有数据绑定)
-    
         //TODO: 在已绑定的数据中添加新的数据进行绑定
         Vue.set(food, 'count', 1)  //让新增的属性也有数据绑定
         // 将food添加到cartFoods中
@@ -57,7 +56,7 @@ const mutations = {
         } else {
             food.count++
         }
-        /** 
+        /**
          * p65
          * 1.通过两个引用变量指向同一个对象，通过一个引用变量改变变量内部数据，另外一个引用变量能看见
          * 2.两个引用变量指向同一个对象，让一个引用变量指向另外一个对象，而原来的引用变量的另一个引用变量还是指向原来的对象
@@ -78,7 +77,11 @@ const mutations = {
       state.cartFoods.forEach(food => food.count = 0);
       //移除购物车中所有购物项
       state.cartFoods = []
-    }
+    },
+
+    [RECEIVE_SEARCH_SHOPS](state, {searchShops}) {
+        state.searchShops = searchShops
+    },
 }
 
 export default  mutations

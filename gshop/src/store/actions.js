@@ -132,6 +132,17 @@ const actions = {
   clearCart({commit}) {
     commit(CLEAR_CART)
   },
+
+  // 异步获取商家商品列表
+  async searchShops({commit, state}, keyword) {
+
+    const geohash = state.latitude + ',' + state.longitude
+    const result = await reqSearchShop(geohash, keyword)
+    if (result.code === 0) {
+      const searchShops = result.data
+      commit(RECEIVE_SEARCH_SHOPS, {searchShops})
+    }
+  },
 }
 
 export default actions

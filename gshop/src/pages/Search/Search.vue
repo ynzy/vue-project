@@ -2,22 +2,75 @@
 <template>
   <section class="search">
     <HeaderTop title="搜索"/>
-    <form class="search_form" action="#">
-      <input type="search" name="search" placeholder="请输入商家或美食名称" class="search_input">
+    <form class="search_form" @submit.prevent="search">
+      <input
+        type="search"
+        name="search"
+        placeholder="请输入商家或美食名称"
+        class="search_input"
+        v-model="keyword"
+      >
       <input type="submit" name="submit" class="search_submit">
     </form>
+    <section class="list" v-if="!noSearchShops">
+      <ul class="list_container">
+        <!--:to="'/shop?id='+item.id"-->
+        <!-- tag属性<a>标签将会成为真实的链接 (并且可以获取到正确的跳转)，但是激活的类将会被应用在外部的<li>标签上。
+          a标签替换为li标签 -->
+        <router-link to="{path:'/shop', query:{id:item.id}}" tag="li"
+        v-for="item in searchShops" :key="item.id" class="list_li">
+          <section class="item_left">
+            <img :src="imgBaseUrl + item.image_path" class="restaurant_img">
+          </section>
+          <section class="item_right">
+            <div class="item_right_text">
+              <p>
+                <span>{{item.name}}</span>
+              </p>
+              <p>月售 {{item.month_sales||item.recent_order_num}} 单</p>
+              <p>{{item.delivery_fee||item.float_minimum_order_amount}} 元起送 / 距离 {{item.distance}} 公里</p>
+            </div>
+          </section>
+        </router-link>
+      </ul>
+    </section>
+    <div class="search_none" v-else>很抱歉！无搜索结果</div>
   </section>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import HeaderTop from "../../components/HeaderTop/HeaderTop.vue";
 export default {
   data() {
-    return {};
+    return {
+      keyword: '',
+      imgBaseUrl: 'http://cangdu.org:8001/img/',
+      noSearchShops: false
+    };
   },
-  computed: {},
-
-  methods: {},
+  computed: {
+    ...mapState(['searchShops'])
+  },
+  watch: {
+    searchShops (value) {
+      if(!value.length) {  //如果没有数据
+        this.noSearchShops = true
+      } else {  //如果有数据
+        this.noSearchShops = false
+      }
+    }
+  },
+  methods: {
+    search() {
+      //得到搜索关键字,去除字符串的头尾空格
+      const keyword = this.keyword.trim()
+      //进行搜索
+      if (keyword) {
+        this.$store.dispatch('searchShops',keyword)
+      }
+    }
+  },
   components: {
     HeaderTop
   }

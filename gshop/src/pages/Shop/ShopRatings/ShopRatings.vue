@@ -66,7 +66,8 @@
                 ></span>
                 <span class="item" v-for="(item, index) in rating.recommend" :key="index">{{item}}</span>
               </div>
-              <div class="time">{{rating.rateTime}}</div>
+              <!-- 使用过滤器 -->
+              <div class="time">{{rating.rateTime | date-format}}</div>
             </div>
           </li>
         </ul>
@@ -115,7 +116,6 @@ export default {
           text: 有值、没有值
           !onlyShowText取反，为true时不需要判断text有没有值
           !onlyShowText || text.length>0
-
          */
         return (selectType===2 || selectType===rateType) && (!onlyShowText || text.length>0)
       })

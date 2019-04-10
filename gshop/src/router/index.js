@@ -3,10 +3,20 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import FooterGuide from '@/components/FooterGuide/FooterGuide'
 
-import Msite from '@/pages/Msite/Msite'
-import Order from '@/pages/Order/Order'
-import Profile from '@/pages/Profile/Profile'
-import Search from '@/pages/Search/Search'
+
+// import Msite from '@/pages/Msite/Msite'
+// import Order from '@/pages/Order/Order'
+// import Profile from '@/pages/Profile/Profile'
+// import Search from '@/pages/Search/Search'
+/**
+ * 路由组件懒加载
+ * 拆分路由文件，按需加载需要的js
+ */
+const Msite = () => import('../pages/Msite/Msite.vue')
+const Search = () => import('../pages/Search/Search.vue')
+const Order = () => import('../pages/Order/Order.vue')
+const Profile = () => import('../pages/Profile/Profile.vue')
+
 import Login from '@/pages/Login/Login'
 
 import Shop from '@/pages/Shop/Shop'
@@ -24,7 +34,7 @@ export default new Router({
     {
       path: '/msite',
       name: 'msite',
-      component: Msite,
+      component: Msite, // 返回路由组件的函数, 只有执行此函数才会加载路由组件, 这个函数在请求对应的路由路径时才会执行
       meta: {  //配置元数据确定是否显示footer
         showFooter: true
       }

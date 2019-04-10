@@ -6,7 +6,10 @@
 * npm install -S axios 安装axios
 * npm install vuex --save 安装vuex
 * npm install mockjs   安装mockjs
-* npm install better-scroll  
+* npm install better-scroll  滚动插件  
+* npm i vue-lazyload -S   图片懒加载
+* npm i moment -S 引入日期格式化
+* npm i date-fns -S 轻量级格式化日期代替moment
 ## 讲解你的项目
 1. 项目描述
 * 是哪一方面的项目：前后端分离的SPA应用，外卖app
