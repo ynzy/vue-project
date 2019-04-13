@@ -1,6 +1,7 @@
 const express = require("express");  //引入express
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const app = express(); //实例化app
 
 // 引入users.js
@@ -22,10 +23,15 @@ mongoose
   .then(() => console.log('MongoDB连接成功。。。'))
   .catch(err => console.log(err));
 
+  // passport 初始化
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 // app.get("/",(req,res) => {  //发送一个请求
 //     res.send("hello World!")
 // })
+
+
 
 // 使用routes
 app.use('/api/users', users);
