@@ -13,9 +13,9 @@ const User = require('../../models/User');
 // @route  GET api/users/test
 // @desc   返回的请求的json数据
 // @access public
-// router.get('/test', (req, res) => {
-//     res.json({ msg: 'login works' });
-// });
+router.get('/test', (req, res) => {
+    res.json({ msg: 'login works' });
+});
 
 // @route  POST api/users/register
 // @desc   返回的请求的json数据
@@ -76,7 +76,7 @@ router.post('/login', (req, res) => {
           };
 
         //jwt.sign("规则"，”加密名字“，”过期时间“，”箭头函数“)
-          jwt.sign(rule, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+          jwt.sign(rule, keys.secretOrKey, { expiresIn: 3600*24 }, (err, token) => {
             if (err) throw err;
             res.json({
               success: true,
@@ -106,6 +106,26 @@ router.get(
       email: req.user.email,
       identity: req.user.identity
     });
+  }
+);
+
+// @route  GET api/profiles/:id
+// @desc   获取单个信息
+// @access Private
+
+router.get(
+  '/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ _id: req.params.id })
+      .then(profile => {
+        if (!profile) {
+          return res.status(404).json('没有任何内容');
+        }
+
+        res.json(profile);
+      })
+      .catch(err => res.status(404).json(err));
   }
 );
 
