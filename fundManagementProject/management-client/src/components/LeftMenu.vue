@@ -53,7 +53,12 @@ export default {
           icon: "fa-asterisk",
           name: "信息管理",
           path: "info",
-          children: [{ path: "infoshow", name: "个人信息" }]
+          children: [
+            { path: "infoshow", name: "个人信息" },
+            { path: "touchdemo", name: "手机滑动事件" },
+             { path: "touchdemo2", name: "手机滑动事件2" },
+              { path: "touchdemo3", name: "手机滑动事件3" }
+          ]
         }
       ]
     };

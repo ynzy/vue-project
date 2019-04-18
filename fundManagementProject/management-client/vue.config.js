@@ -23,8 +23,14 @@ module.exports = {
         //         }
         //     }
         // })
+       
     },
     chainWebpack: config => { // webpack链接API，用于生成和修改webapck配置，https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
+        config.module.rule('pug')
+            .test(/\.pug$/)
+            .use('pug-html-loader')
+            .loader('pug-html-loader')
+            .end()
         if (debug) {
             // 本地开发配置
         } else {
@@ -38,20 +44,20 @@ module.exports = {
     },
     devServer: {
         open: true,
-        host: 'localhost',
+        host: '192.168.0.11',
         port: 8081,
         https: false,
         hotOnly: false,
-        proxy: { // 配置跨域
-            '/api': {
-                target: 'http://localhost:5000/api/',
-                ws: true,
-                changOrigin: true,
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        },
+        // proxy: { // 配置跨域
+        //     '/api': {
+        //         target: 'http://localhost:5000/api/',
+        //         ws: true,
+        //         changOrigin: true,
+        //         pathRewrite: {
+        //             '^/api': ''
+        //         }
+        //     }
+        // },
         before: app => { }
     }
 }

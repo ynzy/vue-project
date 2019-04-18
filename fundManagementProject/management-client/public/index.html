@@ -7,6 +7,22 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="css/reset.css">
     <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_895750_91sjj8u1t6e.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+      <!-- TODO: 解决点击响应延时 0.3s 问题 -->
+  <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+  <script>
+    if ('addEventListener' in document) {
+      document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+      }, false);
+    }
+    if(!window.Promise) {
+      document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+    }
+    
+  </script>
+
     <title>client</title>
   </head>
   <body>

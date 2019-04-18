@@ -7,6 +7,9 @@ import Nofind from './views/404'
 import Home from './views/Home.vue'
 import InfoShow from './views/InfoShow.vue'
 import FoundList from './views/FoundList'
+import touchdemo from './views/touchdemo.vue'
+import touchdemo2 from './views/touchdemo2.vue'
+import touchdemo3 from './views/touchdemo3.vue'
 Vue.use(Router)
 
 const router = new Router({
@@ -25,7 +28,10 @@ const router = new Router({
         { path: '', component: Home },
         { path: '/home', name: 'home', component: Home },
         { path: '/infoshow', name: 'infoshow', component: InfoShow },
-        { path: '/foundlist', name: 'foundlist', component: FoundList }
+        { path: '/foundlist', name: 'foundlist', component: FoundList },
+        { path: '/touchdemo', name: 'touchdemo', component: touchdemo },
+        { path: '/touchdemo2', name: 'touchdemo2', component: touchdemo2 },
+        { path: '/touchdemo3', name: 'touchdemo3', component: touchdemo3 }
       ]
     },
     {

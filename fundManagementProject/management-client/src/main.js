@@ -9,6 +9,8 @@ import store from './store'
 
 import './filters' // 加载过滤器
 
+import 'vue-orgchart/dist/style.min.css'
+
 Vue.use(ElementUI)
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false

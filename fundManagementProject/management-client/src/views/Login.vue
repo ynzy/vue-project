@@ -63,7 +63,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           // alert('submit!');
-          this.$axios.post("/api/users/login", this.loginUser).then(res => {
+          this.$axios.post("http://localhost:5000/api/users/login", this.loginUser).then(res => {
             //登录成功
             // console.log(res)
             //token
