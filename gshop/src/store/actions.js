@@ -50,7 +50,7 @@ const actions = {
     // 提交一个mutation
     if (result.code === 0) {
       const categorys = result.data
-      commit(RECEIVE_CATEGORYS, {categorys})
+      commit( ``, {categorys})
     }
   },
 
