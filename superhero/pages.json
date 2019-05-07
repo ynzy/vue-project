@@ -4,8 +4,10 @@
 			"path": "pages/index/index",
 			"style": {
 				"app-plus": {
-                    "titleNView": false //禁用原生导航栏
-                }
+                    "titleNView": true //禁用原生导航栏
+                },
+				"enablePullDownRefresh": true //开启单页面下拉刷新功能
+				
 			}
 		}, {
 			"path": "pages/search/search",

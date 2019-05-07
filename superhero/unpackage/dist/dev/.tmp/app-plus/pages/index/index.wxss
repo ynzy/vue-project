@@ -1,32 +1,154 @@
+.ellipsis-1 {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
 .carousel {
   width: 100%;
   height: 440rpx;
 }
 /* 热门超英 start */
-.super-hot {
-  margin-top: 12rpx;
-  padding: 12rpx;
+.hot {
+  width: 100%;
+  white-space: nowrap;
 }
-.super-hot .hot-title-warpper {
+.single-poster {
+  display: inline-block;
+  margin-left: 20rpx;
+}
+.single-poster .poster-warpper {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.super-hot .hot-title-warpper .hot-ico {
-  width: 30rpx;
-  height: 30rpx;
-  margin-top: 15rpx;
+.single-poster .poster-warpper .poster {
+  width: 200rpx;
+  height: 270rpx;
 }
-.super-hot .hot-title-warpper .hot-title {
-  font-size: 20px;
-  margin-left: 20rpx;
-  font-weight: 500;
+.single-poster .poster-warpper .movie-name {
+  width: 200rpx;
+  margin-top: 10rpx;
+  font-size: 14px;
+  font-weight: bold;
+  /* name超出则省略 */
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
 }
 /* 热门超英 end */
+/* 热门预告 start */
+.hot-movies {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20rpx 20rpx 20rpx;
+}
+.hot-movies .hot-movie-single {
+  width: 350rpx;
+  height: 220rpx;
+  margin-top: 10rpx;
+}
+/* 热门预告 end */
+/* 猜你喜欢 start */
+.guess-u-like {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.guess-u-like .single-like-movie {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 30rpx 20rpx;
+}
+.guess-u-like .single-like-movie .like-movie {
+  width: 180rpx;
+  height: 240rpx;
+  border-radius: 3%;
+}
+.guess-u-like .single-like-movie .movie-desc {
+  width: 340rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.guess-u-like .single-like-movie .movie-desc .movie-title {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.guess-u-like .single-like-movie .movie-desc .movie-info {
+  color: #808080;
+  font-size: 14px;
+}
+.guess-u-like .single-like-movie .movie-oper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 140rpx;
+  border-left: dashed 2px #edece8;
+}
+.guess-u-like .single-like-movie .movie-oper .praise-ico {
+  width: 40rpx;
+  height: 40rpx;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+}
+.guess-u-like .single-like-movie .movie-oper .praise-me {
+  font-size: 14px;
+  color: #febc32;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+}
+.animation-opacity {
+  font-weight: bold;
+  opacity: 0;
+}
+/* 猜你喜欢 end */
 

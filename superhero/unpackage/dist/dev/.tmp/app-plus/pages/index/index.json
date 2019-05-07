@@ -1,4 +1,8 @@
 {
-  "titleNView": false,
-  "usingComponents": {}
+  "enablePullDownRefresh": true,
+  "titleNView": true,
+  "usingComponents": {
+    "trailer-stars": "/components/trailerStars",
+    "title-bar": "/components/titleBar"
+  }
 }
