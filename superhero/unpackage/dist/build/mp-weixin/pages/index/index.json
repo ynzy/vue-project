@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "trailer-stars": "/components/trailerStars",
+    "title-bar": "/components/titleBar"
+  }
+}

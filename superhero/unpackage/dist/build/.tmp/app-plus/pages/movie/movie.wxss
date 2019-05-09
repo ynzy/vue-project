@@ -1,0 +1,148 @@
+.ellipsis-1 {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.player {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: black;
+}
+.movie {
+  width: 100%;
+  height: 440rpx;
+}
+/* 影片基本信息 start */
+.movie-info {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 40rpx 20rpx;
+  background: #f7f7f7;
+}
+.movie-info .cover {
+  width: 280rpx;
+  height: 380rpx;
+}
+.movie-info .movie-desc {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 30rpx;
+  width: 400rpx;
+}
+.movie-info .movie-desc .title {
+  font-size: 25px;
+}
+.movie-info .movie-desc .basic-info {
+  font-size: 13px;
+  line-height: 36rpx;
+  color: darkgray;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+/* 影片基本信息 end */
+.score-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 360rpx;
+  height: 90rpx;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  -webkit-box-shadow: 3px 2px 10px #dedede;
+          box-shadow: 3px 2px 10px #dedede;
+  background: #fff;
+}
+.score-block .big-score .score-words {
+  font-size: 12px;
+  color: gray;
+}
+.score-block .big-score .movie-score {
+  line-height: 60rpx;
+  margin-left: 8rpx;
+  font-size: 26px;
+  font-weight: blod;
+  color: #ffa534;
+}
+.score-block .score-stars {
+  margin-top: 35rpx;
+}
+.score-block .score-stars .prise-counts {
+  line-height: 44rpx;
+  font-size: 12px;
+  color: gray;
+}
+.plots-block {
+  padding: 20rpx 40rpx;
+}
+.plots-block .plots-desc {
+  margin-top: 10rpx;
+  font-size: 16px;
+}
+.plots-title {
+  font-size: 14px;
+  color: #a9a9a9;
+}
+.scroll-block {
+  padding: 20rpx 40rpx;
+}
+.scroll-block .scroll-list {
+  width: 100%;
+  white-space: nowrap;
+  margin-top: 20rpx;
+}
+.scroll-block .plot-image {
+  width: 220rpx;
+  height: 320rpx;
+  margin-right: 10rpx;
+}
+.single-actor {
+  width: 170rpx;
+  height: 240rpx;
+  margin-right: 10rpx;
+}
+.actor-wapper {
+  display: inline-block;
+}
+.actor-name {
+  width: 170rpx;
+  text-align: center;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.actor-role {
+  width: 170rpx;
+  text-align: center;
+  font-size: 13px;
+  color: #a9a9a9;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+

@@ -104,6 +104,11 @@
 
 
 
+
+
+
+
+
 {
   data: function data() {
     return {
@@ -126,20 +131,21 @@
       hotTrailerList: [],
       guessULikeList: [],
       animationData: {},
-      animationDataArr: [
-      {}, {}, {}, {}, {}] };
-
+      animationDataArr: [{}, {}, {}, {}, {}] };
 
   },
   onUnload: function onUnload() {
     //页面卸载的时候，清除动画数据
     this.animationData = {};
-    this.animationDataArr = [
-    {}, {}, {}, {}, {}];
-
+    this.animationDataArr = [{}, {}, {}, {}, {}];
   },
   onPullDownRefresh: function onPullDownRefresh() {
     this.refresh();
+  },
+  onHide: function onHide() {
+    if (this.videoContext) {
+      this.videoContext.pause();
+    }
   },
   onLoad: function onLoad() {
     var me = this;
@@ -215,10 +221,26 @@
     this.refresh();
   },
   methods: {
+    meIsPlaying: function meIsPlaying(e) {
+      //播放一个视频的时候，需要暂停其他正在播放的视频
+      var me = this;
+      var trailerId = "";
+      if (e) {
+        trailerId = e.currentTarget.dataset.playingindex;
+        me.videoContext = uni.createVideoContext(trailerId);
+      }
+      var hotTrailerList = me.hotTrailerList;
+      for (var i = 0; i < hotTrailerList.length; i++) {
+        var tempId = hotTrailerList[i].id;
+        //如果视屏id不等于当前播放的id，暂停他们的视频
+        if (tempId != trailerId) {
+          uni.createVideoContext(tempId).pause();
+        }
+      }
+    },
     refresh: function refresh() {var _this = this;
-
       uni.showLoading({
-        title: '加载中',
+        title: '加载中...',
         mask: true });
 
       // uni.showNavigationBarLoading();

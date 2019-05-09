@@ -4,20 +4,96 @@
 			"path": "pages/index/index",
 			"style": {
 				"app-plus": {
-                    "titleNView": true //禁用原生导航栏
-                },
+					"titleNView": true //禁用原生导航栏
+				},
 				"enablePullDownRefresh": true //开启单页面下拉刷新功能
-				
 			}
 		}, {
 			"path": "pages/search/search",
 			"style": {
-				"navigationBarTitleText": "搜索"
+				"navigationBarTitleText": "搜索预告片"
 			}
 		}, {
 			"path": "pages/me/me",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ffd655",
+				"app-plus": {
+					"titleNView": false //禁用原生导航栏
+				}
+			}
+		}, {
+			"path": "pages/movie/movie",
+			"style": {
+				"navigationBarTitleText": "电影详情",
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent",
+						"buttons": [{
+								"type": "share"
+							},
+							{
+								"type": "home"
+							},
+							{
+								"type": "forward"
+							}
+						]
+					}
+				}
+			}
+		}, {
+			"path": "pages/cover/cover",
+			"style": {
+				"navigationBarTitleText": "封面",
+				"navigationBarBackgroundColor": "#000000",
+				"navigationBarTextStyle": "white"
+			}
+		}, {
+			"path": "pages/registLogin/registLogin",
+			"style": {}
+		}, {
+			"path": "pages/meInfo/meInfo",
+			"style": {
+				"navigationBarTitleText": "设置",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ffd655"
+			}
+		}, {
+			"path": "pages/meFace/meFace",
+			"style": {
+				"navigationBarTitleText": "头像上传",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#000"
+			}
+		}, {
+			"path": "pages/faceCrop/faceCrop",
+			"style": {
+				"navigationBarTitleText": "头像裁剪上传",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#000"
+			}
+		}, {
+			"path": "pages/meNickname/meNickname",
+			"style": {
+				"navigationBarTitleText": "修改昵称",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ffd655"
+			}
+		}, {
+			"path": "pages/meBirthday/meBirthday",
+			"style": {
+				"navigationBarTitleText": "修改生日",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ffd655"
+			}
+		}, {
+			"path": "pages/sex/sex",
+			"style": {
+				"navigationBarTitleText": "修改性别",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ffd655"
 			}
 		}
 	],

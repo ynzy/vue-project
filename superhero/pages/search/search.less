@@ -1,0 +1,47 @@
+.ellipsis-1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+// 搜索框组件
+.search-block {
+	display: flex;
+	padding: 0 20upx 20upx 20upx;
+	margin: 0 auto;
+	width: 100%;
+	// 固定搜索栏
+	position: fixed;
+	top: 100;
+	z-index: 2000;
+	background: #F8F8F8;
+	.search-ico-wapper {
+		display: flex;
+		align-items: center;
+		padding: 0 10upx;
+		background: #fff;
+		.search-ico {
+			width: 40upx;
+			height: 40upx;
+		}
+	}
+	.search-text {
+		width: 650upx;
+		height: 60upx;
+		font-size: 14px;
+		background: #fff;
+	}
+}
+// 搜索列表
+.movie-list {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	padding: 100upx 10upx 0 10upx;
+	.movie-warpper {
+		padding: 10upx 20upx;
+		.movie-title {
+			width: 200upx;
+			.ellipsis-1;
+		}
+	}
+}

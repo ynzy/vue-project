@@ -4,10 +4,10 @@
 		<view class="movie-score-warpper">
 			<image
 				v-for="(yellow, index) in yelloScore" :key="index"
-				src="../static/icos/star-yellow.png" class="start-ico"></image>
+				src="../../static/icos/star-yellow.png" class="start-ico"></image>
 			<image
 				v-for="(gray, itemindex) in grayScore" :key="itemindex"
-				src="../static/icos/star-gray.png" class="start-ico"></image>
+				src="../../static/icos/star-gray.png" class="start-ico"></image>
 			<view class="movie-score" v-if="showNum == 1">
 				{{innerScore}}
 			</view>

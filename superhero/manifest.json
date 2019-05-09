@@ -1,8 +1,8 @@
 {
-    "name" : "superhero-dev",
+    "name" : "超英预告app",
     "appid" : "__UNI__7935E2C",
     "description" : "",
-    "versionName" : "1.0.0",
+    "versionName" : "0.0.1",
     "versionCode" : "100",
     "transformPx" : false,
     "app-plus" : {
@@ -14,7 +14,11 @@
             "autoclose" : true,
             "delay" : 0
         },
-        "modules" : {},
+        "modules" : {
+            "Share" : {},
+            "OAuth" : {},
+            "VideoPlayer" : {}
+        },
         /* 模块配置 */
         "distribute" : {
             /* 应用发布信息 */
@@ -47,7 +51,69 @@
             },
             "ios" : {},
             /* ios打包配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wxc0136cc414f8f0bd",
+                        "appsecret" : "1a4022dc8248c2eba4157ed0329ee17c"
+                    }
+                },
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wxc0136cc414f8f0bd",
+                        "appsecret" : "1a4022dc8248c2eba4157ed0329ee17c"
+                    },
+                    "qq" : {
+                        "appid" : "123"
+                    },
+                    "sina" : {
+                        "appkey" : "123",
+                        "appsecret" : "123",
+                        "redirect_uri" : "123"
+                    }
+                }
+            },
+            "icons" : {
+                "ios" : {
+                    "appstore" : "C:/Users/Administrator/Desktop/超英预告1.png",
+                    "ipad" : {
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png"
+                    },
+                    "iphone" : {
+                        "app@2x" : "unpackage/res/icons/120x120.png",
+                        "app@3x" : "unpackage/res/icons/180x180.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png"
+                    }
+                },
+                "android" : {
+                    "hdpi" : "unpackage/res/icons/72x72.png",
+                    "ldpi" : "unpackage/res/icons/48x48.png",
+                    "mdpi" : "unpackage/res/icons/48x48.png",
+                    "xhdpi" : "unpackage/res/icons/96x96.png",
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
+                }
+            },
+            "splashscreen" : {
+                "android" : {
+                    "hdpi" : "H:/公司图标/launch1080x1920.png",
+                    "xhdpi" : "H:/公司图标/launch1080x1920.png",
+                    "xxhdpi" : "H:/公司图标/launch1080x1920.png"
+                }
+            }
         }
     },
     /* SDK配置 */
@@ -60,5 +126,8 @@
             "urlCheck" : false
         },
         "usingComponents" : true
+    },
+    "h5" : {
+        "title" : "超英电影预告"
     }
 }

@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"black { position: fixed; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; width: 100%; height: 100%; background: #000; }\n",],undefined,{path:"./pages/cover/cover.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/cover/cover.wxml') } }));

@@ -2,7 +2,9 @@
 	<view class="page">
 		<!-- 轮播图 start -->
 		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" class="carousel">
-			<swiper-item v-for="carousel in carouselList" :key="carousel.id"><image :src="carousel.image" class="carousel"></image></swiper-item>
+			<swiper-item v-for="carousel in carouselList" :key="carousel.id">
+				<navigator open-type="navigate" :url="'../movie/movie?trailerId=' + carousel.movieId"><image :src="carousel.image" class="carousel"></image></navigator>
+			</swiper-item>
 		</swiper>
 		<!-- <swiper-item>
 				<image src="../../static/carousel/batmanvssuperman.png" class="carousel"></image>
@@ -26,7 +28,9 @@
 		<scroll-view scroll-x="true" class="page-block hot">
 			<view class="single-poster" v-for="superhero in hotSuperheroList" :key="superhero.id">
 				<view class="poster-warpper">
-					<image :src="superhero.cover" class="poster"></image>
+					<navigator open-type="navigate" :url="'../movie/movie?trailerId=' + superhero.id">
+						<image :src="superhero.cover" class="poster"></image>
+					</navigator>
 					<view class="movie-name">{{ superhero.name }}</view>
 					<trailerStars :innerScore="superhero.score" :showNum="1" />
 					<!-- <view class="movie-score-wapper">
@@ -47,7 +51,11 @@
 		<!-- 热门预告 start -->
 		<titleBar :title="meuntitle[1].title" :icon="meuntitle[1].icon" />
 		<view class="hot-movies page-block">
-			<video v-for="trailer in hotTrailerList" :key="trailer.id" :src="trailer.trailer" :poster="trailer.poster" class="hot-movie-single" controls></video>
+			<video
+			 :id="trailer.id"
+			 :data-playingIndex="trailer.id"
+			 @play="meIsPlaying"
+			 v-for="trailer in hotTrailerList" :key="trailer.id" :src="trailer.trailer" :poster="trailer.poster" class="hot-movie-single" controls></video>
 		</view>
 		<!-- 热门预告 end -->
 
@@ -68,21 +76,18 @@
 					<view :animation="animationData" class="praise-me animation-opacity">+1</view>
 				</view>
 			</view> -->
-			<view class="single-like-movie" v-for="(guess, gIndex) in guessULikeList" 
-			:key="guess.id">
-				<image :src="guess.cover" class="like-movie"></image>
+			<view class="single-like-movie" v-for="(guess, gIndex) in guessULikeList" :key="guess.id">
+				<navigator open-type="navigate" :url="'../movie/movie?trailerId=' + guess.id"><image :src="guess.cover" class="like-movie"></image></navigator>
 				<view class="movie-desc">
 					<view class="movie-title">{{ guess.name }}</view>
-					<trailerStars :innerScore="9.1" :showNum="0" />
+					<trailerStars :innerScore="guess.score" :showNum="0" />
 					<view class="movie-info">{{ guess.basicInfo }}</view>
 					<view class="movie-info">{{ guess.releaseDate }}</view>
 				</view>
 				<view class="movie-oper" :data-gIndex="gIndex" @click="praiseMe">
 					<image src="../../static/icos/praise.png" class="praise-ico"></image>
 					<view class="praise-me">点赞</view>
-					<view :animation="animationDataArr[gIndex]" class="praise-me animation-opacity">
-						+1
-					</view>
+					<view :animation="animationDataArr[gIndex]" class="praise-me animation-opacity">+1</view>
 				</view>
 			</view>
 		</view>
@@ -100,15 +105,15 @@ export default {
 			meuntitle: [
 				{
 					title: '热门超英',
-					icon: '../static/icos/hot.png'
+					icon: '../../static/icos/hot.png'
 				},
 				{
 					title: '热门预告',
-					icon: '../static/icos/interest.png'
+					icon: '../../static/icos/interest.png'
 				},
 				{
 					title: '猜你喜欢',
-					icon: '../static/icos/guess-u-like.png'
+					icon: '../../static/icos/guess-u-like.png'
 				}
 			],
 			carouselList: [],
@@ -116,27 +121,28 @@ export default {
 			hotTrailerList: [],
 			guessULikeList: [],
 			animationData: {},
-			animationDataArr:[
-				{},{},{},{},{}
-			]
+			animationDataArr: [{}, {}, {}, {}, {}]
 		};
 	},
 	onUnload() {
 		//页面卸载的时候，清除动画数据
 		this.animationData = {};
-		this.animationDataArr = [
-			{},{},{},{},{}
-		]
+		this.animationDataArr = [{}, {}, {}, {}, {}];
 	},
 	onPullDownRefresh() {
 		this.refresh();
 	},
+	onHide() {
+		if (this.videoContext) {
+				this.videoContext.pause();
+			}
+	},
 	onLoad() {
 		var me = this;
-		
+
 		// #ifdef APP-PLUS || MP-WEIXIN
-			// 在页面创建的时候，创建一个临时动画对象
-			this.animation = uni.createAnimation();
+		// 在页面创建的时候，创建一个临时动画对象
+		this.animation = uni.createAnimation();
 		// #endif
 		// 获取common.js中的服务器地址
 		// var serverUrl = common.serverUrl;
@@ -169,7 +175,7 @@ export default {
 				'content-type': 'application/x-www-form-urlencoded'
 			},
 			data: {
-				type:'superhero',
+				type: 'superhero',
 				qq: '466481615'
 			},
 			success: res => {
@@ -201,18 +207,34 @@ export default {
 				}
 			}
 		});
-		
+
 		this.refresh();
 	},
 	methods: {
+		meIsPlaying(e) {
+			//播放一个视频的时候，需要暂停其他正在播放的视频
+			var me = this;
+			var trailerId = "";
+			if(e) {
+				trailerId = e.currentTarget.dataset.playingindex;
+				me.videoContext = uni.createVideoContext(trailerId);
+			}
+			var hotTrailerList = me.hotTrailerList;
+			for (var i = 0; i < hotTrailerList.length ; i ++) {
+				var tempId = hotTrailerList[i].id;
+				//如果视屏id不等于当前播放的id，暂停他们的视频
+				if (tempId != trailerId) {
+						uni.createVideoContext(tempId).pause();
+					}
+			}
+		},
 		refresh() {
-			
 			uni.showLoading({
-				title: '加载中',
+				title: '加载中...',
 				mask: true
 			});
 			// uni.showNavigationBarLoading();
-			
+
 			var serverUrl = this.serverUrl;
 			// 猜你喜欢
 			uni.request({
@@ -244,7 +266,7 @@ export default {
 			// console.log(e)
 			// #ifdef APP-PLUS || MP-WEIXIN
 			var gIndex = e.currentTarget.dataset.gindex;
-			
+
 			//构建动画数据，并且通过step来表示这组动画的完成
 			this.animation
 				.translateY(-60)
@@ -256,7 +278,7 @@ export default {
 			// this.animationData = this.animation.export();
 			this.animationData = this.animation;
 			this.animationDataArr[gIndex] = this.animationData.export();
-			
+
 			//还原动画
 			setTimeout(() => {
 				this.animation
@@ -269,7 +291,7 @@ export default {
 				this.animationData = this.animation;
 				this.animationDataArr[gIndex] = this.animationData.export();
 			}, 500);
-			
+
 			//#endif
 		}
 	},

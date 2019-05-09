@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "电影详情",
+  "usingComponents": {
+    "trailer-stars": "/components/trailerStars"
+  }
+}
